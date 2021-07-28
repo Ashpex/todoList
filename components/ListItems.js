@@ -28,7 +28,10 @@ const ListItems = ({todos, setTodos}) => {
     }
 
     return (
-        <SwipeListView
+
+        <>
+        {todos.length == 0 && <TodoText>You have no todos</TodoText>}
+        {todos.length != 0 && <SwipeListView
             date={todos}
             renderItem={(data) => {
                 const RowText = data.item.key == swipedRow ? SwipedTodoText : TodoText;
@@ -60,7 +63,7 @@ const ListItems = ({todos, setTodos}) => {
             leftOpenValue={80}
             previewRowKey={"1"}
             previewOpenValue={80}
-            previewOpenDelay={30000}
+            previewOpenDelay={3000}
             disableLeftSwipe={true}
             showsVerticalScrollIndicator={false}
             style={{
@@ -77,7 +80,8 @@ const ListItems = ({todos, setTodos}) => {
                 setSwipedRow(null);
             }}
 
-        />
+        />}
+        </>
     );
 }
 
